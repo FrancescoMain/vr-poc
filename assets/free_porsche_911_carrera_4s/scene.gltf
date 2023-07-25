@@ -1427,40 +1427,40 @@
   "buffers": [
     {
       "byteLength": 18588808,
-      "uri": "./scene.bin"
+      "uri": "scene.bin"
     }
   ],
   "extensionsUsed": ["KHR_materials_clearcoat", "KHR_materials_transmission"],
   "images": [
     {
-      "uri": "./textures/paint_metallicRoughness.png"
+      "uri": "textures/paint_metallicRoughness.png"
     },
     {
-      "uri": "./textures/license_baseColor.png"
+      "uri": "textures/license_baseColor.png"
     },
     {
-      "uri": "./textures/license_normal.png"
+      "uri": "textures/license_normal.png"
     },
     {
-      "uri": "./textures/logo_baseColor.png"
+      "uri": "textures/logo_baseColor.png"
     },
     {
-      "uri": "./textures/rubber_metallicRoughness.png"
+      "uri": "textures/rubber_metallicRoughness.png"
     },
     {
-      "uri": "./textures/rubber_normal.png"
+      "uri": "textures/rubber_normal.png"
     },
     {
-      "uri": "./textures/tex_shiny_baseColor.png"
+      "uri": "textures/tex_shiny_baseColor.png"
     },
     {
-      "uri": "./textures/tex_shiny_emissive.png"
+      "uri": "textures/tex_shiny_emissive.png"
     },
     {
-      "uri": "./textures/Material_baseColor.png"
+      "uri": "textures/Material_baseColor.png"
     },
     {
-      "uri": "./textures/Material_metallicRoughness.png"
+      "uri": "textures/Material_metallicRoughness.png"
     }
   ],
   "materials": [
