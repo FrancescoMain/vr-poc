@@ -9,22 +9,38 @@
   </head>
   <body>
     <a-scene>
+      <script src="./app.js"></script>
+
       <a-assets>
-        <img id="background" src="./assets/background.jpg"
-      /></a-assets>
+        <img id="background" src="./assets/background.jpg" />
+        <a-mixin
+          id="font"
+          text="font: https://cdn.aframe.io/fonts/Exo2SemiBold.fnt"></a-mixin
+      ></a-assets>
       <a-sky src="#background"></a-sky>
       <a-entity
+        id="cyber"
+        hoverable
         gltf-model="url(./assets/free_cyberpunk_hovercar/scene.gltf)"
         scale="0.3 0.3 0.3"
-        position="0 1 -5"></a-entity>
+        position="0 1 -5">
+      </a-entity>
       <a-entity
+        id="run"
+        text3
         gltf-model="url(./assets/free_merc_hovercar/scene.gltf)"
         scale="1 1 1"
         position="3 1 -5"></a-entity>
       <a-entity
+        id="porche"
+        text2
         gltf-model="url(./assets/free_porsche_911_carrera_4s/scene.gltf)"
         scale="0.5 0.5 0.5"
         position="-3 1 -5"></a-entity>
+      <a-camera>
+        <!-- Il cursore personalizzato -->
+        <a-cursor color="red" scale="1 1 1"></a-cursor>
+      </a-camera>
     </a-scene>
   </body>
 </html>
