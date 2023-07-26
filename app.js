@@ -115,7 +115,19 @@ AFRAME.registerComponent("change-postion", {
   init: function () {
     this.el.addEventListener("click", () => {
       const position = this.el.getAttribute("position");
-      console.log("Position:", position);
+
+      // Imposta l'altezza costante a 1.6
+      const height = 1.6;
+
+      // Crea un nuovo oggetto di posizione con l'altezza costante
+      const newPosition = { x: position.x, y: height, z: position.z };
+
+      const cameraElement = document.getElementById("camera");
+
+      // Controlla che l'elemento con ID "camera" esista prima di impostare la posizione
+      if (cameraElement) {
+        cameraElement.setAttribute("position", newPosition);
+      }
     });
   },
 });
