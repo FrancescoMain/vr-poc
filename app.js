@@ -29,7 +29,12 @@ AFRAME.registerComponent("hoverable", {
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
     });
     this.el.addEventListener("click", function () {
-      console.log("fun");
+      var drawer = document.querySelector("#drawer");
+      if (drawer.style.width === "0%") {
+        drawer.style.width = "20%";
+      } else {
+        drawer.style.width = "0%";
+      }
     });
   },
 });
@@ -64,6 +69,14 @@ AFRAME.registerComponent("text2", {
 
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
     });
+    this.el.addEventListener("click", function () {
+      var drawer = document.querySelector("#drawer");
+      if (drawer.style.width === "0%") {
+        drawer.style.width = "20%";
+      } else {
+        drawer.style.width = "0%";
+      }
+    });
   },
 });
 
@@ -96,6 +109,14 @@ AFRAME.registerComponent("text3", {
       var paper = document.querySelector("#cyberText"); // Utilizza lo stesso ID definito sopra
 
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
+    });
+    this.el.addEventListener("click", function () {
+      var drawer = document.querySelector("#drawer");
+      if (drawer.style.width === "0%") {
+        drawer.style.width = "20%";
+      } else {
+        drawer.style.width = "0%";
+      }
     });
   },
 });

@@ -6,4 +6,9 @@ body {
 
 .vr-cont {
   height: 600px;
+  display: flex;
+}
+#drawer {
+  width: 0%;
+  transition: width 2s;
 }
