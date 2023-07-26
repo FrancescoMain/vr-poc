@@ -26,7 +26,6 @@ AFRAME.registerComponent("hoverable", {
       var sceneEl = document.querySelector("#cyber");
       var paper = document.querySelector("#cyberText"); // Utilizza lo stesso ID definito sopra
 
-      console.log("out");
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
     });
   },
@@ -60,7 +59,6 @@ AFRAME.registerComponent("text2", {
       var sceneEl = document.querySelector("#porche");
       var paper = document.querySelector("#cyberText"); // Utilizza lo stesso ID definito sopra
 
-      console.log("out");
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
     });
   },
@@ -94,8 +92,30 @@ AFRAME.registerComponent("text3", {
       var sceneEl = document.querySelector("#run");
       var paper = document.querySelector("#cyberText"); // Utilizza lo stesso ID definito sopra
 
-      console.log("out");
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
+    });
+  },
+});
+
+AFRAME.registerComponent("step-hover", {
+  init: function () {
+    // Utilizziamo una funzione freccia qui per mantenere il contesto corretto
+    this.el.addEventListener("mouseenter", () => {
+      this.el.setAttribute("color", "lightgrey");
+    });
+
+    // Puoi anche utilizzare una funzione freccia qui
+    this.el.addEventListener("mouseleave", () => {
+      this.el.setAttribute("color", "white");
+    });
+  },
+});
+
+AFRAME.registerComponent("change-postion", {
+  init: function () {
+    this.el.addEventListener("click", () => {
+      const position = this.el.getAttribute("position");
+      console.log("Position:", position);
     });
   },
 });
