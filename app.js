@@ -28,6 +28,9 @@ AFRAME.registerComponent("hoverable", {
 
       sceneEl.removeChild(paper); // Modifica il metodo da "parentNode.nodeChild" a "removeChild"
     });
+    this.el.addEventListener("click", function () {
+      console.log("fun");
+    });
   },
 });
 
