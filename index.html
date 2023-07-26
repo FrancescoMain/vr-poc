@@ -12,9 +12,13 @@
       <script src="./app.js"></script>
       <script src="./components/entityComponent.js"></script>
 
-      <a-entity id="camera" camera look-controls position="0 1.6 0">
+      <a-camera
+        id="camera"
+        look-controls
+        position="20 20 20"
+        animation="property: position; to: 0 1.6 -0; dur: 3000; easing: linear;">
         <a-cursor color="red" scale="0.5 0.5"></a-cursor>
-      </a-entity>
+      </a-camera>
       <a-plane
         color="grey"
         rotation="-90 0 0"
