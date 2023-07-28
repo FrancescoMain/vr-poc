@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.vr-cont {
+  height: 600px;
+  display: flex;
+}
+#drawer {
+  width: 0%;
+  transition: width 0.2s;
+}
