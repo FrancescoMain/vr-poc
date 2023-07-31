@@ -15,7 +15,8 @@ var Acircle = /*#__PURE__*/function () {
   function Acircle() {
     _classCallCheck(this, Acircle);
     _defineProperty(this, "attributes", "");
-    _defineProperty(this, "html", "<a-circle ".concat(this.attributes, " ></a-circle>"));
+    _defineProperty(this, "children", "");
+    _defineProperty(this, "html", "<a-circle ".concat(this.attributes, " ><").concat(this.children, "/a-circle>"));
   }
   _createClass(Acircle, [{
     key: "getHtml",
@@ -26,7 +27,13 @@ var Acircle = /*#__PURE__*/function () {
     key: "setAttributes",
     value: function setAttributes(attributes) {
       this.attributes = attributes;
-      this.html = "<a-circle ".concat(this.attributes, " ></a-circle>");
+      this.html = "<a-circle ".concat(this.attributes, " ><").concat(this.children, "/a-circle>");
+    }
+  }, {
+    key: "setChildren",
+    value: function setChildren(children) {
+      this.children = children;
+      this.html = "<a-circle ".concat(this.attributes, " ><").concat(this.children, "/a-circle>");
     }
   }]);
   return Acircle;

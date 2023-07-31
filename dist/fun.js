@@ -119,9 +119,10 @@ AFRAME.registerComponent("step-hover", {
 AFRAME.registerComponent("change-position", {
   init: function init() {
     var _this2 = this;
+    var data = this.data;
     this.el.addEventListener("click", function () {
+      var skyEl = document.querySelector("#sky");
       var position = _this2.el.getAttribute("position");
-      console.log(position);
 
       // Imposta l'altezza costante a 1.6
       var height = 1.6;
@@ -134,10 +135,85 @@ AFRAME.registerComponent("change-position", {
       };
       var cameraElement = document.getElementById("camera");
 
-      // Controlla che l'elemento con ID "camera" esista prima di impostare la posizione
-      if (cameraElement) {
-        cameraElement.setAttribute("position", newPosition);
+      // Aggiungi l'animazione alla sfera del cielo (a-sky)
+      cameraElement.setAttribute("animation", {
+        property: "position",
+        to: newPosition,
+        dur: 1000 // Durata in millisecondi della transizione (puoi regolare il valore)
+      });
+
+      // Cambia il background dopo la transizione
+      skyEl.setAttribute("src", data);
+    });
+  }
+});
+AFRAME.registerComponent("test", {
+  init: function init() {
+    var _this3 = this;
+    var childElement = this.el.childNodes[1];
+    this.el.addEventListener("mouseenter", function () {
+      _this3.el.setAttribute("color", "grey");
+      childElement.setAttribute("visible", "true");
+      childElement.setAttribute("scale", "1 1 1");
+    });
+    this.el.addEventListener("mouseleave", function () {
+      _this3.el.setAttribute("color", "black");
+      childElement.setAttribute("scale", "0 0 0");
+    });
+  }
+});
+AFRAME.registerComponent("scopri", {
+  init: function init() {
+    var _this4 = this;
+    // Utilizziamo una funzione freccia qui per mantenere il contesto corretto
+    this.el.addEventListener("mouseenter", function () {
+      _this4.el.setAttribute("color", "red");
+    });
+
+    //  Puoi anche utilizzare una funzione freccia qui
+    this.el.addEventListener("mouseleave", function () {
+      _this4.el.setAttribute("color", "white");
+    });
+    this.el.addEventListener("click", function () {
+      var drawer = document.querySelector("#drawer");
+      var gdad = _this4.el.parentElement; // Ottieni l'elemento genitore
+      var dad = gdad.parentElement; // Ottieni l'elemento genitore
+      var parentElement = dad.parentElement; // Ottieni l'elemento genitore
+      var position = parentElement.getAttribute("position");
+      var newPosition = {
+        x: position.x,
+        y: position.y,
+        z: position.z + 2.5
+      };
+      var cameraElement = document.getElementById("camera");
+
+      // Aggiungi un ascoltatore di eventi per l'animazione completata
+      var animationEndListener = function animationEndListener() {
+        cameraElement.removeEventListener("animationcomplete", animationEndListener);
+        cameraElement.removeAttribute("animation");
+      };
+
+      // Controlla se l'animazione è già in corso, rimuovi l'evento "animationcomplete" e resetta la posizione
+      if (cameraElement.getAttribute("animation")) {
+        cameraElement.removeEventListener("animationcomplete", animationEndListener);
+        cameraElement.removeAttribute("animation");
       }
+
+      // Aggiungi un ascoltatore di eventi per l'animazione completata
+      cameraElement.addEventListener("animationcomplete", animationEndListener);
+
+      // Imposta l'animazione della posizione
+      cameraElement.setAttribute("animation", {
+        property: "position",
+        to: newPosition,
+        dur: 1000 // Durata in millisecondi della transizione (puoi regolare il valore)
+      });
+
+      if (drawer.style.width === "20%") {
+        drawer.style.width = "0%";
+        return;
+      }
+      drawer.style.width = "20%";
     });
   }
 });

@@ -16,7 +16,7 @@ var ASky = /*#__PURE__*/function () {
     var _this = this;
     _classCallCheck(this, ASky);
     _defineProperty(this, "background", "black");
-    _defineProperty(this, "html", "<a-sky src=".concat(this.background, "></a-sky>"));
+    _defineProperty(this, "html", "<a-sky id=\"sky\" material=\"opacity: 1\" src=".concat(this.background, "></a-sky>"));
     _defineProperty(this, "getHtml", function () {
       return _this.html;
     });
@@ -25,7 +25,7 @@ var ASky = /*#__PURE__*/function () {
     key: "setBackground",
     value: function setBackground(background) {
       this.background = background;
-      this.html = "<a-sky src=".concat(this.background, "></a-sky>");
+      this.html = "<a-sky id=\"sky\" material=\"opacity: 1\" src=".concat(this.background, "></a-sky>");
     }
   }]);
   return ASky;

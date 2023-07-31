@@ -1,6 +1,6 @@
 class ASky {
   background = "black";
-  html = `<a-sky src=${this.background}></a-sky>`;
+  html = `<a-sky id="sky" material="opacity: 1" src=${this.background}></a-sky>`;
 
   getHtml = () => {
     return this.html;
@@ -8,7 +8,7 @@ class ASky {
 
   setBackground(background) {
     this.background = background;
-    this.html = `<a-sky src=${this.background}></a-sky>`;
+    this.html = `<a-sky id="sky" material="opacity: 1" src=${this.background}></a-sky>`;
   }
 }
 

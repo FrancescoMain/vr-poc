@@ -1,6 +1,7 @@
 export class Acircle {
   attributes = ``;
-  html = `<a-circle ${this.attributes} ></a-circle>`;
+  children = ``;
+  html = `<a-circle ${this.attributes} ><${this.children}/a-circle>`;
 
   getHtml() {
     return this.html;
@@ -8,6 +9,11 @@ export class Acircle {
 
   setAttributes(attributes) {
     this.attributes = attributes;
-    this.html = `<a-circle ${this.attributes} ></a-circle>`;
+    this.html = `<a-circle ${this.attributes} ><${this.children}/a-circle>`;
+  }
+
+  setChildren(children) {
+    this.children = children;
+    this.html = `<a-circle ${this.attributes} ><${this.children}/a-circle>`;
   }
 }

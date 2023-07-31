@@ -12,3 +12,7 @@ body {
   width: 0%;
   transition: width 0.2s;
 }
+
+#overPannel {
+  display: none;
+}

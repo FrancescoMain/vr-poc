@@ -137,7 +137,9 @@ AFRAME.registerComponent("step-hover", {
 
 AFRAME.registerComponent("change-position", {
   init: function () {
+    var data = this.data;
     this.el.addEventListener("click", () => {
+      var skyEl = document.querySelector("#sky");
       const position = this.el.getAttribute("position");
 
       // Imposta l'altezza costante a 1.6
@@ -148,10 +150,90 @@ AFRAME.registerComponent("change-position", {
 
       const cameraElement = document.getElementById("camera");
 
-      // Controlla che l'elemento con ID "camera" esista prima di impostare la posizione
-      if (cameraElement) {
-        cameraElement.setAttribute("position", newPosition);
+      // Aggiungi l'animazione alla sfera del cielo (a-sky)
+      cameraElement.setAttribute("animation", {
+        property: "position",
+        to: newPosition,
+        dur: 1000, // Durata in millisecondi della transizione (puoi regolare il valore)
+      });
+
+      // Cambia il background dopo la transizione
+      skyEl.setAttribute("src", data);
+    });
+  },
+});
+
+AFRAME.registerComponent("test", {
+  init: function () {
+    const childElement = this.el.childNodes[1];
+    this.el.addEventListener("mouseenter", () => {
+      this.el.setAttribute("color", "grey");
+      childElement.setAttribute("visible", "true");
+      childElement.setAttribute("scale", "1 1 1");
+    });
+
+    this.el.addEventListener("mouseleave", () => {
+      this.el.setAttribute("color", "black");
+      childElement.setAttribute("scale", "0 0 0");
+    });
+  },
+});
+
+AFRAME.registerComponent("scopri", {
+  init: function () {
+    // Utilizziamo una funzione freccia qui per mantenere il contesto corretto
+    this.el.addEventListener("mouseenter", () => {
+      this.el.setAttribute("color", "red");
+    });
+
+    //  Puoi anche utilizzare una funzione freccia qui
+    this.el.addEventListener("mouseleave", () => {
+      this.el.setAttribute("color", "white");
+    });
+
+    this.el.addEventListener("click", () => {
+      var drawer = document.querySelector("#drawer");
+      const gdad = this.el.parentElement; // Ottieni l'elemento genitore
+      const dad = gdad.parentElement; // Ottieni l'elemento genitore
+      const parentElement = dad.parentElement; // Ottieni l'elemento genitore
+      const position = parentElement.getAttribute("position");
+      const newPosition = { x: position.x, y: position.y, z: position.z + 2.5 };
+      const cameraElement = document.getElementById("camera");
+
+      // Aggiungi un ascoltatore di eventi per l'animazione completata
+      const animationEndListener = () => {
+        cameraElement.removeEventListener(
+          "animationcomplete",
+          animationEndListener
+        );
+        cameraElement.removeAttribute("animation");
+      };
+
+      // Controlla se l'animazione è già in corso, rimuovi l'evento "animationcomplete" e resetta la posizione
+      if (cameraElement.getAttribute("animation")) {
+        cameraElement.removeEventListener(
+          "animationcomplete",
+          animationEndListener
+        );
+        cameraElement.removeAttribute("animation");
       }
+
+      // Aggiungi un ascoltatore di eventi per l'animazione completata
+      cameraElement.addEventListener("animationcomplete", animationEndListener);
+
+      // Imposta l'animazione della posizione
+      cameraElement.setAttribute("animation", {
+        property: "position",
+        to: newPosition,
+        dur: 1000, // Durata in millisecondi della transizione (puoi regolare il valore)
+      });
+
+      if (drawer.style.width === "20%") {
+        drawer.style.width = "0%";
+        return;
+      }
+
+      drawer.style.width = "20%";
     });
   },
 });
